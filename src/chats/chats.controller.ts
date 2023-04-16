@@ -7,7 +7,9 @@ export class ChatsController {
   constructor(private readonly chatsService: ChatsService) {}
 
   @Post()
-  create(@Body() createChatDto: CreateChatDto) {
-    return this.chatsService.generateRequest(createChatDto);
+  async create(@Body() createChatDto: CreateChatDto) {
+    console.log('backend invocado!!!');
+    const response = await this.chatsService.generateRequest(createChatDto);
+    return response.toString();
   }
 }
